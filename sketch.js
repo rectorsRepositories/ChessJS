@@ -1,7 +1,7 @@
 
 const chessBoard = new ChessBoard();
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 800);
 }
 
 function draw() {

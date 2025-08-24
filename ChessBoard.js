@@ -1,22 +1,20 @@
 class ChessBoard {
-    constructor() {
-        this.chessBoard = [[], [], [], [], [], [], [], []];
-    }
-    drawBackground () {
-        let squareCount = 0;
-        for (let i = 0; i < height; i+= (height / 8)) {
-            
-            if (squareCount % 2 == 0) {
-                noStroke();
-                fill(0, 99, 0, 255);
-                square(0, i, height / 8);
-                noFill();
-                squareCount++
-            } else {
-                square(0, i, height / 8);
-                squareCount++
-            }
-        }
+  constructor() {
+    this.chessBoard = [[], [], [], [], [], [], [], []];
+  }
+  drawBackground() {
+    let cellSize = width / 8;
 
-    } 
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        if ((row + col) % 2 === 0) {
+          fill("#efeaea"); // light square
+        } else {
+          fill("#000103"); // dark square
+        }
+        noStroke();
+        square(col * cellSize, row * cellSize, cellSize);
+      }
+    }
+  }
 }
