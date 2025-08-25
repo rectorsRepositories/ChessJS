@@ -1,6 +1,14 @@
 class ChessBoard {
   constructor() {
     this.chessBoard = [[], [], [], [], [], [], [], []];
+    this.chessPieces = {
+      king: { black: "\u265A", white: "\u2654" },
+      queen: { black: "\u265B", white: "\u2655" },
+      rook: { black: "\u265C", white: "\u2656" },
+      bishop: { black: "\u265D", white: "\u2657" },
+      knight: { black: "\u265E", white: "\u2658" },
+      pawn: { black: "\u265F", white: "\u2659" },
+    };
   }
 
   drawChessBoard() {
@@ -16,36 +24,41 @@ class ChessBoard {
         }
         noStroke();
         square(col * cellSize + rankWidth, row * cellSize, cellSize);
-        fill("red");
-        circle(
-          col * cellSize + cellSize / 2 + rankWidth,
-          row * cellSize + cellSize / 2,
-          30
-        );
-        textAlign(CENTER);
-        fill("yellow");
-        textSize(60);
-        text(
-          "\u2654",
-          col * cellSize + cellSize / 2 + rankWidth,
-          row * cellSize + cellSize / 2 + cellSize / 3
-        );
+        // fill("red");
+        // circle(
+        //   col * cellSize + cellSize / 2 + rankWidth,
+        //   row * cellSize + cellSize / 2,
+        //   30
+        // );
+        // textAlign(CENTER);
+        // fill("yellow");
+        // textSize(60);
+        // text(
+        //   "\u2654",
+        //   col * cellSize + cellSize / 2 + rankWidth,
+        //   row * cellSize + cellSize / 2 + cellSize / 3
+        // );
       }
     }
     noFill();
+    textAlign(CENTER);
     //draw rank (up/down)
     for (let i = 0; i <= 8; i++) {
       if (i < 8) {
         fill("purple");
         textSize(rankWidth / 2);
-        text(i + 1, rankWidth / 2, cellSize * i + cellSize / 2);
+        text(
+          i + 1,
+          rankWidth / 2,
+          cellSize * i + cellSize / 2 + textSize() / 2
+        );
         noFill();
       }
     }
     //draw file (left/right)
     for (let i = 0; i < 8; i++) {
       let fileNum = i + 1;
-      let fileChar
+      let fileChar;
       switch (fileNum) {
         case 1:
           fileChar = "A";
@@ -56,7 +69,7 @@ class ChessBoard {
         case 3:
           fileChar = "C";
           break;
-        case 4: 
+        case 4:
           fileChar = "D";
           break;
         case 5:
@@ -75,8 +88,12 @@ class ChessBoard {
           break;
       }
       fill("purple");
-      textSize(rankWidth / 2)
-      text(fileChar, i * cellSize + rankWidth + cellSize / 2 , cellSize * 8 + cellSize / 2)
+      textSize(rankWidth / 2);
+      text(
+        fileChar,
+        i * cellSize + rankWidth + cellSize / 2,
+        cellSize * 8 + cellSize / 2 + textSize() / 4
+      );
       noFill();
     }
   }
@@ -95,6 +112,29 @@ class ChessBoard {
     }
     console.log(this.chessBoard);
   }
-  drawFillWhitePieces() {}
+  drawFillWhitePieces() {
+    //fill white pawns in this.chessBoard
+    for (let j = 0; j < this.chessBoard[6].length; j++) {
+      this.chessBoard[6][j].setOccupiedPiece(this.chessPieces.pawn.white);
+      console.log(this.chessBoard[6][j]);
+      fill("red");
+      text(
+        this.chessBoard[6][j].getOccupiedPiece,
+        this.chessBoard[6][j].getSquareCanvasPosX,
+        this.chessBoard[6][j].getSquareCanvasPosY + textSize() / 2
+      );
+      circle(
+        this.chessBoard[6][j].getSquareCanvasPosX,
+        this.chessBoard[6][j].getSquareCanvasPosY + textSize() / 2,
+        30
+      );
+      noFill();
+    }
+  }
   drawFillBlackPieces() {}
+  drawPiecesToBoard() {
+    for (let i = 0; i < this.chessBoard.length; i++) {
+      for (let j = 0; j < this.chessBoard[i].length; i++) {}
+    }
+  }
 }

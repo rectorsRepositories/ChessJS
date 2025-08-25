@@ -23,7 +23,7 @@ class BoardSquare {
     get getOccupiedPiece () {
         return this.occupiedPiece;
     }
-    set setOccupiedPiece (newPiece) {
+    setOccupiedPiece (newPiece) {
         this.occupiedPiece = newPiece;
     } 
 }
