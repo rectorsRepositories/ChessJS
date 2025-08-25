@@ -3,6 +3,7 @@ class BoardSquare {
         this.squareCanvasPosX = squareCanvasPosX;
         this.squareCanvasPosY = squareCanvasPosY;
         this.occupiedPiece = false;
+        this.teamColor = false;
     }
     // set/get squareCanvasPosX
     get getSquareCanvasPosX () {
@@ -26,4 +27,12 @@ class BoardSquare {
     setOccupiedPiece (newPiece) {
         this.occupiedPiece = newPiece;
     } 
+    // set team color
+    setTeamColor(newColor) {
+        this.teamColor = newColor;
+    }
+    getTeamColor() {
+        return this.teamColor;
+    }
+
 }

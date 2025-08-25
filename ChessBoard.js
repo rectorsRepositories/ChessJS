@@ -117,27 +117,37 @@ class ChessBoard {
     //fill white pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[6].length; j++) {
       this.chessBoard[6][j].setOccupiedPiece(this.chessPieces.pawn.white);
+      this.chessBoard[6][j].setTeamColor("white");
     }
   }
   fillBlackPieces() {
     //fill black pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[1].length; j++) {
       this.chessBoard[1][j].setOccupiedPiece(this.chessPieces.pawn.black);
-      console.log(this.chessBoard[1][j]);
+      this.chessBoard[1][j].setTeamColor("black");
     }
   }
   drawPiecesToBoard() {
+    //iterate through board
     for (let i = 0; i < this.chessBoard.length; i++) {
-      console.log(this.chessBoard[i].length)
-      for (let j = 0; j < 8; j++) {
+      for (let j = 0; j < this.chessBoard[i].length; j++) {
         let boardPiece = this.chessBoard[i][j];
+        //check if a piece on the square
         if (boardPiece.getOccupiedPiece) {
-          fill("purple");
+          //check piece color to fill
+          console.log(boardPiece.getTeamColor())
+          if (boardPiece.getTeamColor() == "white") {
+            fill("red");
+          } else {
+            fill("blue");
+          }
+          //draw piece on screen
           text(
             boardPiece.getOccupiedPiece,
             boardPiece.getSquareCanvasPosX,
             boardPiece.getSquareCanvasPosY
           );
+          noFill();
         }
       }
     }
