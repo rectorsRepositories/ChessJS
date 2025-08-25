@@ -98,10 +98,11 @@ class ChessBoard {
     }
   }
   initChessBoardArr() {
+    textSize(60);
     let rankWidth = width / 10;
     let cellSize = (width - rankWidth) / 8;
     let middleCellCoordOffsetX = cellSize / 2 + rankWidth;
-    let middleCellCoordOffsetY = cellSize / 2;
+    let middleCellCoordOffsetY = cellSize / 2 + textSize() / 2;
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
         let squareMiddleX = col * cellSize + middleCellCoordOffsetX;
@@ -112,39 +113,31 @@ class ChessBoard {
     }
     console.log(this.chessBoard);
   }
-  drawFillWhitePieces() {
+  fillWhitePieces() {
     //fill white pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[6].length; j++) {
       this.chessBoard[6][j].setOccupiedPiece(this.chessPieces.pawn.white);
-      fill("red");
-      text(
-        this.chessBoard[6][j].getOccupiedPiece,
-        this.chessBoard[6][j].getSquareCanvasPosX,
-        this.chessBoard[6][j].getSquareCanvasPosY + textSize() / 2
-      );
-      noFill();
     }
   }
-  drawFillBlackPieces() {
+  fillBlackPieces() {
     //fill black pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[1].length; j++) {
       this.chessBoard[1][j].setOccupiedPiece(this.chessPieces.pawn.black);
       console.log(this.chessBoard[1][j]);
-      fill("blue");
-      text(
-        this.chessBoard[1][j].getOccupiedPiece,
-        this.chessBoard[1][j].getSquareCanvasPosX,
-        this.chessBoard[1][j].getSquareCanvasPosY + textSize() / 2
-      );
-      noFill();
     }
   }
   drawPiecesToBoard() {
     for (let i = 0; i < this.chessBoard.length; i++) {
-      for (let j = 0; j < this.chessBoard[i].length; i++) {
-        let boardPiece = this.chessBoard[i][j]
-        if(boardPiece.getOccupiedPiece) {
-          text(boardPiece.getOccupiedPiece, boardPiece.getSquareCanvasPosX, boardPiece.getSquareCanvasPosY)
+      console.log(this.chessBoard[i].length)
+      for (let j = 0; j < 8; j++) {
+        let boardPiece = this.chessBoard[i][j];
+        if (boardPiece.getOccupiedPiece) {
+          fill("purple");
+          text(
+            boardPiece.getOccupiedPiece,
+            boardPiece.getSquareCanvasPosX,
+            boardPiece.getSquareCanvasPosY
+          );
         }
       }
     }
