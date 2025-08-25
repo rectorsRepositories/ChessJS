@@ -116,25 +116,37 @@ class ChessBoard {
     //fill white pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[6].length; j++) {
       this.chessBoard[6][j].setOccupiedPiece(this.chessPieces.pawn.white);
-      console.log(this.chessBoard[6][j]);
       fill("red");
       text(
         this.chessBoard[6][j].getOccupiedPiece,
         this.chessBoard[6][j].getSquareCanvasPosX,
         this.chessBoard[6][j].getSquareCanvasPosY + textSize() / 2
       );
-      circle(
-        this.chessBoard[6][j].getSquareCanvasPosX,
-        this.chessBoard[6][j].getSquareCanvasPosY + textSize() / 2,
-        30
+      noFill();
+    }
+  }
+  drawFillBlackPieces() {
+    //fill black pawns in this.chessBoard
+    for (let j = 0; j < this.chessBoard[1].length; j++) {
+      this.chessBoard[1][j].setOccupiedPiece(this.chessPieces.pawn.black);
+      console.log(this.chessBoard[1][j]);
+      fill("blue");
+      text(
+        this.chessBoard[1][j].getOccupiedPiece,
+        this.chessBoard[1][j].getSquareCanvasPosX,
+        this.chessBoard[1][j].getSquareCanvasPosY + textSize() / 2
       );
       noFill();
     }
   }
-  drawFillBlackPieces() {}
   drawPiecesToBoard() {
     for (let i = 0; i < this.chessBoard.length; i++) {
-      for (let j = 0; j < this.chessBoard[i].length; i++) {}
+      for (let j = 0; j < this.chessBoard[i].length; i++) {
+        let boardPiece = this.chessBoard[i][j]
+        if(boardPiece.getOccupiedPiece) {
+          text(boardPiece.getOccupiedPiece, boardPiece.getSquareCanvasPosX, boardPiece.getSquareCanvasPosY)
+        }
+      }
     }
   }
 }
