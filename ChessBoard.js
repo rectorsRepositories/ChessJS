@@ -119,13 +119,46 @@ class ChessBoard {
       this.chessBoard[6][j].setOccupiedPiece(this.chessPieces.pawn.white);
       this.chessBoard[6][j].setTeamColor("white");
     }
+    // add white king in this.chessBoard
+    this.chessBoard[7][4].setOccupiedPiece(this.chessPieces.king.white);
+     this.chessBoard[7][4].setTeamColor("white")
+    // add white queen in this.chessBoard
+    this.chessBoard[7][3].setOccupiedPiece(this.chessPieces.queen.white);
+    this.chessBoard[7][3].setTeamColor("white")
+    // add white rooks in this.chessBoard
+    this.chessBoard[7][0].setOccupiedPiece(this.chessPieces.rook.white);
+    this.chessBoard[7][0].setTeamColor("white")
+    this.chessBoard[7][7].setOccupiedPiece(this.chessPieces.rook.white);
+    this.chessBoard[7][7].setTeamColor("white")
+    // add white knights in this.chessBoard
+    this.chessBoard[7][1].setOccupiedPiece(this.chessPieces.knight.white);
+    this.chessBoard[7][1].setTeamColor("white")
+    this.chessBoard[7][6].setOccupiedPiece(this.chessPieces.knight.white);
+    this.chessBoard[7][6].setTeamColor("white")
+    // add white bishops in this.chessBoard
+    this.chessBoard[7][2].setOccupiedPiece(this.chessPieces.bishop.white);
+    this.chessBoard[7][2].setTeamColor("white")
+    this.chessBoard[7][5].setOccupiedPiece(this.chessPieces.bishop.white);
+    this.chessBoard[7][5].setTeamColor("white")
   }
   fillBlackPieces() {
     //fill black pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[1].length; j++) {
       this.chessBoard[1][j].setOccupiedPiece(this.chessPieces.pawn.black);
-      this.chessBoard[1][j].setTeamColor("black");
     }
+    // add black king in this.chessBoard
+    this.chessBoard[0][4].setOccupiedPiece(this.chessPieces.king.black);
+    // add black queen in this.chessBoard
+    this.chessBoard[0][3].setOccupiedPiece(this.chessPieces.queen.black);
+    // add black rooks in this.chessBoard
+    this.chessBoard[0][0].setOccupiedPiece(this.chessPieces.rook.black);
+    this.chessBoard[0][7].setOccupiedPiece(this.chessPieces.rook.black);
+    // add black knights in this.chessBoard
+    this.chessBoard[0][1].setOccupiedPiece(this.chessPieces.knight.black);
+    this.chessBoard[0][6].setOccupiedPiece(this.chessPieces.knight.black);
+    // add black bishops in this.chessBoard
+    this.chessBoard[0][2].setOccupiedPiece(this.chessPieces.bishop.black);
+    this.chessBoard[0][5].setOccupiedPiece(this.chessPieces.bishop.black);
   }
   drawPiecesToBoard() {
     //iterate through board
@@ -135,7 +168,6 @@ class ChessBoard {
         //check if a piece on the square
         if (boardPiece.getOccupiedPiece) {
           //check piece color to fill
-          console.log(boardPiece.getTeamColor())
           if (boardPiece.getTeamColor() == "white") {
             fill("red");
           } else {
