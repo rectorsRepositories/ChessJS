@@ -1,11 +1,7 @@
 class BoardSquare {
-    constructor (squareCanvasPosX, squareCanvasPosY, squareRank, squareFile) {
+    constructor (squareCanvasPosX, squareCanvasPosY) {
         this.squareCanvasPosX = squareCanvasPosX;
         this.squareCanvasPosY = squareCanvasPosY;
-        // rank is horizontal a-h
-        this.squareRank = squareRank;
-        // file is vertical 1-8
-        this.squareFile = squareFile;
         this.occupiedPiece = false;
     }
     // set/get squareCanvasPosX
@@ -22,20 +18,7 @@ class BoardSquare {
     set setSquareCanvasPosY (newCanvasPosY) {
         this.squareCanvasPosY = newCanvasPosY;
     } 
-    // set/get squareRank
-    get getSquareRank () {
-        return this.squareRank;
-    } 
-    set setSquareRank (newSquareRank) {
-        this.squareRank = newSquareRank;
-    }
-    // set/get squareFile
-    get getSquareFile () {
-        return this.squareFile
-    }
-    set setSquareFile(newSquareFile){
-        this.squareFile = newSquareFile;
-    }
+    
     // set/get occupiedPiece
     get getOccupiedPiece () {
         return this.occupiedPiece;
