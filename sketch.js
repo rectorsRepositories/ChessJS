@@ -38,7 +38,7 @@ function mousePressed() {
 }
 function mouseReleased() {
   let maxCursorDistance = 40;
-  let chessSquare
+  let chessSquare;
   for (let i = 0; i < chessBoard.chessBoard.length; i++) {
     for (let j = 0; j < chessBoard.chessBoard[i].length; j++) {
       chessSquare = chessBoard.chessBoard[i][j];
@@ -46,12 +46,8 @@ function mouseReleased() {
       let cursorDistanceY = Math.abs(mouseY - chessSquare.getSquareCanvasPosY);
       let cursorDistanceTot = cursorDistanceX + cursorDistanceY;
       if (cursorDistanceTot <= maxCursorDistance) {
-        chessSquare.setOccupiedPiece(pieceClicked.getOccupiedPiece);
-        chessSquare.setIsPieceWhite(pieceClicked.getIsPieceWhite());
-        if (pieceClicked != chessSquare) {
-          pieceClicked.setOccupiedPiece(false);
-        }
-        console.log(chessSquare);
+        chessBoard.moveChessPiece(chessSquare, pieceClicked)
+        
       }
     }
   }

@@ -186,7 +186,13 @@ class ChessBoard {
       }
     }
   }
-  moveChessPiece () {
-
+  moveChessPiece (chessSquare, pieceClicked) {
+    chessSquare.setOccupiedPiece(pieceClicked.getOccupiedPiece);
+        chessSquare.setIsPieceWhite(pieceClicked.getIsPieceWhite());
+        pieceClicked.setIsPieceWhite(false)
+        //check if player tried to move to same square
+        if (pieceClicked != chessSquare) {
+          pieceClicked.setOccupiedPiece(false);
+        }
   }
 }
