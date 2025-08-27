@@ -34,28 +34,28 @@ function mousePressed() {
       }
     }
   }
-
-  fill("green");
-
-  circle(mouseX, mouseY, 30);
   console.log("pressed");
 }
 function mouseReleased() {
   let maxCursorDistance = 40;
+  let chessSquare
   for (let i = 0; i < chessBoard.chessBoard.length; i++) {
     for (let j = 0; j < chessBoard.chessBoard[i].length; j++) {
-      let chessSquare = chessBoard.chessBoard[i][j];
+      chessSquare = chessBoard.chessBoard[i][j];
       let cursorDistanceX = Math.abs(mouseX - chessSquare.getSquareCanvasPosX);
       let cursorDistanceY = Math.abs(mouseY - chessSquare.getSquareCanvasPosY);
       let cursorDistanceTot = cursorDistanceX + cursorDistanceY;
       if (cursorDistanceTot <= maxCursorDistance) {
+        chessSquare.setOccupiedPiece(pieceClicked.getOccupiedPiece);
+        chessSquare.setIsPieceWhite(pieceClicked.getIsPieceWhite());
+        if (pieceClicked != chessSquare) {
+          pieceClicked.setOccupiedPiece(false);
+        }
         console.log(chessSquare);
       }
     }
   }
   pieceClicked = false;
-  fill("lilac");
-  circle(mouseX, mouseY, 20);
   console.log("released");
 }
 function draw() {
@@ -63,9 +63,9 @@ function draw() {
   chessBoard.drawPiecesToBoard(chessBoard.chessBoard);
   if (pieceClicked) {
     if (pieceClicked.getIsPieceWhite()) {
-      fill("green");
+      fill("red");
     } else {
-      fill("purple");
+      fill("blue");
     }
     noCursor(); // hide default cursor
     textSize(32);
