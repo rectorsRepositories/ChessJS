@@ -27,12 +27,12 @@ class BoardSquare {
     setOccupiedPiece (newPiece) {
         this.occupiedPiece = newPiece;
     } 
-    // set team color
-    setTeamColor(newColor) {
-        this.teamColor = newColor;
+    // set isPieceWhite
+    setIsPieceWhite(newColor) {
+        this.isPieceWhite = newColor;
     }
-    getTeamColor() {
-        return this.teamColor;
+    getIsPieceWhite() {
+        return this.isPieceWhite;
     }
 
 }

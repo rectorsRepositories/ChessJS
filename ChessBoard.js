@@ -14,6 +14,7 @@ class ChessBoard {
   drawChessBoard() {
     let rankWidth = width / 10;
     let cellSize = (width - rankWidth) / 8;
+    textAlign(CENTER);
     //draw background squares
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
@@ -24,6 +25,7 @@ class ChessBoard {
         }
         noStroke();
         square(col * cellSize + rankWidth, row * cellSize, cellSize);
+        // TEST to draw circle in the center of boardSquare 
         // fill("red");
         // circle(
         //   col * cellSize + cellSize / 2 + rankWidth,
@@ -41,7 +43,6 @@ class ChessBoard {
       }
     }
     noFill();
-    textAlign(CENTER);
     //draw rank (up/down)
     for (let i = 0; i <= 8; i++) {
       if (i < 8) {
@@ -117,29 +118,29 @@ class ChessBoard {
     //fill white pawns in this.chessBoard
     for (let j = 0; j < this.chessBoard[6].length; j++) {
       this.chessBoard[6][j].setOccupiedPiece(this.chessPieces.pawn.white);
-      this.chessBoard[6][j].setTeamColor("white");
+      this.chessBoard[6][j].setIsPieceWhite(true);
     }
     // add white king in this.chessBoard
     this.chessBoard[7][4].setOccupiedPiece(this.chessPieces.king.white);
-     this.chessBoard[7][4].setTeamColor("white")
+    this.chessBoard[7][4].setIsPieceWhite(true);
     // add white queen in this.chessBoard
     this.chessBoard[7][3].setOccupiedPiece(this.chessPieces.queen.white);
-    this.chessBoard[7][3].setTeamColor("white")
+    this.chessBoard[7][3].setIsPieceWhite(true);
     // add white rooks in this.chessBoard
     this.chessBoard[7][0].setOccupiedPiece(this.chessPieces.rook.white);
-    this.chessBoard[7][0].setTeamColor("white")
+    this.chessBoard[7][0].setIsPieceWhite(true);
     this.chessBoard[7][7].setOccupiedPiece(this.chessPieces.rook.white);
-    this.chessBoard[7][7].setTeamColor("white")
+    this.chessBoard[7][7].setIsPieceWhite(true);
     // add white knights in this.chessBoard
     this.chessBoard[7][1].setOccupiedPiece(this.chessPieces.knight.white);
-    this.chessBoard[7][1].setTeamColor("white")
+    this.chessBoard[7][1].setIsPieceWhite(true);
     this.chessBoard[7][6].setOccupiedPiece(this.chessPieces.knight.white);
-    this.chessBoard[7][6].setTeamColor("white")
+    this.chessBoard[7][6].setIsPieceWhite(true);
     // add white bishops in this.chessBoard
     this.chessBoard[7][2].setOccupiedPiece(this.chessPieces.bishop.white);
-    this.chessBoard[7][2].setTeamColor("white")
+    this.chessBoard[7][2].setIsPieceWhite(true);
     this.chessBoard[7][5].setOccupiedPiece(this.chessPieces.bishop.white);
-    this.chessBoard[7][5].setTeamColor("white")
+    this.chessBoard[7][5].setIsPieceWhite(true);
   }
   fillBlackPieces() {
     //fill black pawns in this.chessBoard
@@ -168,12 +169,13 @@ class ChessBoard {
         //check if a piece on the square
         if (boardPiece.getOccupiedPiece) {
           //check piece color to fill
-          if (boardPiece.getTeamColor() == "white") {
+          if (boardPiece.getIsPieceWhite()) {
             fill("red");
           } else {
             fill("blue");
           }
           //draw piece on screen
+          textAlign(CENTER);
           text(
             boardPiece.getOccupiedPiece,
             boardPiece.getSquareCanvasPosX,
@@ -183,5 +185,8 @@ class ChessBoard {
         }
       }
     }
+  }
+  moveChessPiece () {
+
   }
 }
