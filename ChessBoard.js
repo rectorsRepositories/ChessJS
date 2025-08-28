@@ -25,7 +25,7 @@ class ChessBoard {
         }
         noStroke();
         square(col * cellSize + rankWidth, row * cellSize, cellSize);
-        // TEST to draw circle in the center of boardSquare 
+        // TEST to draw circle in the center of boardSquare
         // fill("red");
         // circle(
         //   col * cellSize + cellSize / 2 + rankWidth,
@@ -186,13 +186,43 @@ class ChessBoard {
       }
     }
   }
-  moveChessPiece (chessSquare, pieceClicked) {
-    chessSquare.setOccupiedPiece(pieceClicked.getOccupiedPiece);
-        chessSquare.setIsPieceWhite(pieceClicked.getIsPieceWhite());
-        pieceClicked.setIsPieceWhite(false)
-        //check if player tried to move to same square
-        if (pieceClicked != chessSquare) {
-          pieceClicked.setOccupiedPiece(false);
-        }
+  moveChessPiece(chessSquare, pieceClicked) {
+    //check if player tried to move to same square
+    if (
+      pieceClicked != chessSquare &&
+      (this.getPieceColor(chessSquare) !=
+        this.getPieceColor(pieceClicked))
+    ) {
+      chessSquare.setOccupiedPiece(pieceClicked.getOccupiedPiece);
+      chessSquare.setIsPieceWhite(pieceClicked.getIsPieceWhite());
+      pieceClicked.setIsPieceWhite(false);
+      pieceClicked.setOccupiedPiece(false);
+    } else {console.log(this.getPieceColor(chessSquare.getOccupiedPiece),
+        this.getPieceColor(pieceClicked.getOccupiedPiece))}
+  }
+  getPieceColor(chessPiece) {
+    const blackPieces = [
+      "\u265A",
+      "\u265B",
+      "\u265C",
+      "\u265D",
+      "\u265E",
+      "\u265F",
+    ];
+    const whitePieces = [
+      "\u2654",
+      "\u2655",
+      "\u2656",
+      "\u2657",
+      "\u2658",
+      "\u2659",
+    ];
+    if (whitePieces.includes(chessPiece.getOccupiedPiece)) {
+      return "white";
+    } else if (blackPieces.includes(chessPiece.getOccupiedPiece)) {
+      return "black";
+    } else {
+      return false;
+    }
   }
 }

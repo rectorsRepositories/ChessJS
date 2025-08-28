@@ -34,5 +34,5 @@ class BoardSquare {
     getIsPieceWhite() {
         return this.isPieceWhite;
     }
-
+    
 }

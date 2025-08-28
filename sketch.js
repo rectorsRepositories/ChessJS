@@ -47,7 +47,7 @@ function mouseReleased() {
       let cursorDistanceTot = cursorDistanceX + cursorDistanceY;
       if (cursorDistanceTot <= maxCursorDistance) {
         chessBoard.moveChessPiece(chessSquare, pieceClicked)
-        
+        console.log(chessSquare)
       }
     }
   }
